@@ -1,0 +1,7 @@
+.form {
+  display: flex;
+  max-width: 320px;
+  flex-direction: column;
+  border-width: 1px;
+  border-color: black;
+}

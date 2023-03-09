@@ -3,6 +3,7 @@ import Form from '../components/Form/Form';
 export class App extends Component {
   state = {
     contacts: [],
+    name: '',
   };
   formSubmithandler = data => {
     console.log(data);
