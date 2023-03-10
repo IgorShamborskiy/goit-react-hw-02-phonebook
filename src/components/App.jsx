@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Form from '../components/Form/Form';
+import Filter from './Filter/Filter';
 export class App extends Component {
   state = {
     contacts: [],
@@ -13,7 +14,8 @@ export class App extends Component {
       <>
         <section>Phonebook</section>
         <Form onSubmit={this.formSubmithandler} />
-        <section>Contacts</section>
+        <section>Contacts:</section>
+        <Filter />
       </>
     );
   }
