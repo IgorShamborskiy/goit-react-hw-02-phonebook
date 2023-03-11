@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import css from '../Filter/Filter.module.css';
 
-class Filter extends Component {
-  render() {
-    return (
-      <label>
-        <span> Find contacts by name </span>
-        <input type="text" />
-      </label>
-    );
-  }
-}
+export const Filter = ({ filter, onChange }) => {
+  return (
+    <label className={css.searchLabel}>
+      <span className={css.searchTitle}>Find contacts by name</span>
+      <input
+        className={css.searchInput}
+        type="text"
+        value={filter}
+        onChange={onChange}
+      />
+    </label>
+  );
+};
 
 Filter.propTypes = {
   filter: PropTypes.string,
   onChange: PropTypes.func,
 };
-
-export default Filter;
