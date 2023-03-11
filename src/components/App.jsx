@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import Form from '../components/Form/Form';
+import { ContactForm } from '../components/Form/Form';
+import { ContactList } from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -9,14 +11,21 @@ export class App extends Component {
   formSubmithandler = data => {
     console.log(data);
   };
+
+  addPhone = newPhone => {
+    this.setState(prevState => {
+      return { phones: [...prevState.phones, newPhone] };
+    });
+  };
   render() {
     return (
-      <>
-        <section>Phonebook</section>
-        <Form onSubmit={this.formSubmithandler} />
-        <section>Contacts:</section>
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.addPhone} />
+        <h2>Contacts</h2>
         <Filter />
-      </>
+        <ContactList />
+      </div>
     );
   }
 }
