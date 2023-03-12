@@ -3,6 +3,7 @@ import { Section } from './Section/Section';
 import { Form } from './Form/Form';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -24,7 +25,7 @@ export class App extends Component {
         alert(`${data.name} is already in contacts`);
       }
       return {
-        contacts: prevState.contacts.concat(data),
+        contacts: prevState.contacts.concat({ ...data, id: nanoid() }),
       };
     });
   };
@@ -52,14 +53,11 @@ export class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <Filter
-            value={this.state.filter}
-            onChange={this.changeFilter}
-          ></Filter>
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
           <ContactList
             visibleContacts={visibleContacts}
             onDeleteContact={this.deleteContact}
-          ></ContactList>
+          />
         </Section>
       </>
     );

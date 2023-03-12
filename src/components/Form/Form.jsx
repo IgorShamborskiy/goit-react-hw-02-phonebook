@@ -1,27 +1,25 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import css from '../Form/Form.module.css';
 
 export class Form extends Component {
-  state = { name: '', id: '', number: '' };
+  state = { name: '', number: '' };
 
   handleInputChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({
       [name]: value,
-      id: nanoid(),
     });
   };
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    this.props.onSubmit({ ...this.state });
 
     this.reset();
   };
 
   reset = () => {
-    this.setState({ name: '', id: '', number: '' });
+    this.setState({ name: '', number: '' });
   };
   render() {
     return (
